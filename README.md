@@ -16,10 +16,12 @@ La aplicación permite:
 
 ## Estructura del Proyecto
 
-.
 ├── index.html
+
 ├── Style.css
+
 ├── Index.js
+
 └── README.md
 
 
