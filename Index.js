@@ -59,6 +59,23 @@ var app = new Vue({
           let eContraseña = document.getElementById('contraseña').value;
           let eConfirContraseña = document.getElementById('confirmarcontraseña').value;
           console.log(` Nombre : ${eName} Email : ${eEmail} Usuario : ${eUsuario} Contraseña : ${eContraseña} Confirmar contraseña : ${eConfirContraseña}` ); 
+      },
+      changeFocus: function(e){
+        switch(e.target.id )
+        {
+          case "campo_nombre":
+             this.$refs.campo_email.focus();
+          break;
+          case "campo_email":
+             this.$refs.campo_usuario.focus();
+          break;
+          case "campo_usuario":
+             this.$refs.campo_pass.focus();
+          break;
+          case "campo_pass":
+             this.$refs.fPass_Confirm.focus();
+          break;          
+        }
       }
     }
   })

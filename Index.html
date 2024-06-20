@@ -24,7 +24,14 @@
                       <span class="pt-2 px-3 input-group-addon bg-info">
                         <i class="fa fa-user fa" aria-hidden="true"></i>
                       </span>
-                      <input v-model="fNombre" type="text" class="form-control" name="name" id="name" :placeholder="campo_nombre" />
+                      <input v-model="fNombre" 
+                             type="text" 
+                             class="form-control" 
+                             name="name" 
+                             id="campo_nombre" 
+                             :placeholder="campo_nombre" 
+                             v-on:keyup.enter="changeFocus($event)"
+                             ref="campo_nombre"/>
                     </div>
                   </div>
                 </div>
@@ -35,7 +42,14 @@
                       <span class="pt-2 px-3 input-group-addon bg-info">
                         <i class="fa fa-envelope fa" aria-hidden="true"></i>
                       </span>
-                      <input v-model="fEmail" type="text" class="form-control" name="email" id="email" :placeholder="campo_email" />
+                      <input v-model="fEmail" 
+                            type="text" 
+                            class="form-control" 
+                            name="email" 
+                            id="campo_email" 
+                            :placeholder="campo_email"
+                            v-on:keyup.enter="changeFocus($event)" 
+                            ref="campo_email"/>
                     </div>
                   </div>
                 </div>
@@ -46,7 +60,14 @@
                         <span class="pt-2 px-3 input-group-addon bg-info">
                         <i class="fa fa-users fa" aria-hidden="true"></i>
                       </span>
-                      <input v-model="fUsuario" type="text" class="form-control" name="usuario" id="usuario" :placeholder="campo_usuario" />
+                      <input v-model="fUsuario" 
+                             type="text" 
+                             class="form-control" 
+                             name="usuario" 
+                             id="campo_usuario" 
+                             :placeholder="campo_usuario"
+                             v-on:keyup.enter="changeFocus($event)"
+                             ref="campo_usuario" />
                     </div>
                   </div>
                 </div>
@@ -57,7 +78,14 @@
                       <span class="pt-2 px-3 input-group-addon bg-info">
                         <i class="fa fa-lock fa" aria-hidden="true"></i>
                       </span>
-                      <input v-model="fPass" type="text" class="form-control" name="contraseña" id="contraseña" :placeholder="campo_pass" />
+                      <input v-model="fPass" 
+                             type="text" 
+                             class="form-control" 
+                             name="contraseña" 
+                             id="campo_pass" 
+                             :placeholder="campo_pass"
+                             v-on:keyup.enter="changeFocus($event)"
+                             ref="campo_pass" />
                     </div>
                   </div>
                 </div>
@@ -68,7 +96,13 @@
                       <span class="pt-2 px-3 input-group-addon bg-info">
                         <i class="fa fa-lock fa" aria-hidden="true"></i>
                       </span>
-                      <input v-model="fPass_Confirm" type="text" class="form-control" name="confirmarcontraseña" id="confirmarcontraseña" :placeholder="campo_pass_Confirm" />
+                      <input v-model="fPass_Confirm" 
+                             type="text" 
+                             class="form-control" 
+                             name="confirmarcontraseña" 
+                             id="fPass_Confirm" 
+                             :placeholder="campo_pass_Confirm" 
+                             ref="fPass_Confirm"/>
                     </div>
                   </div>
                 </div>
