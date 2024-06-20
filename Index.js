@@ -99,4 +99,11 @@ var app = new Vue({
     ]
     }
   })
+
+  var contador = new Vue({
+    el:"#contador",
+    data:{
+      cantidad:0
+    }
+  })
   
