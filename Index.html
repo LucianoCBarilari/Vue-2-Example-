@@ -118,6 +118,24 @@
                     </div>
                  </div>  
           </div>
+          <div class="col-md-6" style="font-size: 50px;">
+            <div id="crono" class="container border rounded mt-2">
+              <div class="col-12 border rounded text-primary text-center">
+                <h2>Cronometro</h2>
+              </div>
+              <div class="row">
+              <div class="col-3">
+                <span id="iniciar" class="fa fa-play-circle" v-on:click="manejoClick($event)"></span>
+              </div>
+              <div class="col-6 text-center text-primary">
+                {{pdHoras}}: {{pdMinutos}}:{{pdSegundos}}.{{pdTiempo*10}}
+              </div>
+              <div class="col-3">
+                <span id="detener" class="fa fa-stop-circle" v-on:click="manejoClick($event)"></span>
+              </div>  
+            </div>
+         </div>  
+          </div>
       </div>
     </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>

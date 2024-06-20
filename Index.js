@@ -106,4 +106,39 @@ var app = new Vue({
       cantidad:0
     }
   })
-  
+  var crono = new Vue({
+    el:"#crono",
+    data:{
+      pdTiempo:0,
+      interval:"",
+      pdHoras:0,
+      pdMinutos:0,
+      pdSegundos:0
+    },
+    methods:{
+      manejoClick:function(event){
+        if(event.target.id==="iniciar"){
+
+       
+          this.interval = setInterval(()=>{
+        this.pdTiempo++;
+        if(this.pdTiempo>9){
+          this.pdTiempo = 0
+          this.pdSegundos++;
+        }
+        if(this.pdSegundos>59){
+          this.pdSegundos=0;
+          this.pdMinutos++;
+        }
+        if(this.pdMinutos>59){
+          this.pdMinutos=0;
+          this.pdHoras++;
+        }
+        },100);
+      }
+        else if(event.target.id==="detener"){
+          clearInterval(this.interval);
+        }
+      }
+    }
+  })
