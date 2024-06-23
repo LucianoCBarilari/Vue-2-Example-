@@ -59,7 +59,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html', // Plantilla HTML de origen
+      template: './public/index.html', // Plantilla HTML de origen
       filename: 'index.html' // Nombre del archivo HTML de salida
     })
   ]
