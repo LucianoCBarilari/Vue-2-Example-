@@ -3,26 +3,29 @@ const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development', // Puedes cambiar a 'production' según corresponda
+  mode: 'production', // Cambiar a 'production' cuando estés listo para el despliegue
   entry: './src/main.js',
+  performance:{
+    hints:false
+  },
   output: {
-    path: path.resolve(__dirname, './src'),
+    path: path.resolve(__dirname, 'dist'), // Carpeta de salida para los archivos generados
     filename: 'bundle.js',
-    publicPath: '/' // Ruta base del proyecto para el servidor de desarrollo
+    publicPath: '/' // Ruta base del proyecto, asegúrate de ajustar según tu configuración de despliegue
   },
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         loader: 'url-loader',
         options: {
-          limit: 8192, // Si el archivo es más pequeño que 8kB, lo convierte en una URL de datos
+          limit: 8192, // Convertir a URL de datos si el archivo es más pequeño que 8kB
           fallback: {
             loader: 'file-loader',
             options: {
-              name: '[name].[hash:8].[ext]', // Nombre del archivo de salida con hash para evitar caché
-              outputPath: 'assets/', // Carpeta de salida dentro de 'dist'
-              publicPath: 'assets/' // Ruta pública para las imágenes en la aplicación
+              name: '[name].[hash:8].[ext]',
+              outputPath: 'assets/',
+              publicPath: 'assets/'
             }
           }
         }
@@ -49,9 +52,9 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src') // Alias para importaciones de archivos dentro de 'src'
+      '@': path.resolve(__dirname, 'src') // Alias para importaciones dentro de 'src'
     },
-    extensions: ['.js', '.vue'] // Extensiones que Webpack resolverá automáticamente
+    extensions: ['.js', '.vue']
   },
   plugins: [
     new VueLoaderPlugin(),
