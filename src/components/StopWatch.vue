@@ -1,59 +1,68 @@
+<script>
+import Vue from 'vue';
+
+export default Vue.extend({
+  name: 'stopWatch',
+  data() {
+    return {
+      pdTime: 0,
+      interval: null,
+      pdHours: 0,
+      pdMinutes: 0,
+      pdSeconds: 0,
+      disable: false
+    };
+  },
+  methods: {
+    clickHandler(event) {      
+      if (event.target.id === "start") {        
+        this.startTimer();
+      } else if (event.target.id === "stop") {        
+        this.stopTimer();
+      }
+    },
+    startTimer() {
+      this.interval = setInterval(() => {
+        this.pdTime++;
+        if (this.pdTime > 9) {
+          this.pdTime = 0;
+          this.pdSeconds++;
+        }
+        if (this.pdSeconds > 59) {
+          this.pdSeconds = 0;
+          this.pdMinutes++;
+        }
+        if (this.pdMinutes > 59) {
+          this.pdMinutes = 0;
+          this.pdHours++;
+        }
+      }, 100);
+    },
+    stopTimer() {
+      clearInterval(this.interval);
+    },
+  },
+});
+</script>
+
 <template>
-
-
-<div id="crono" class="container border rounded mt-2">
-    <div class="col-12 border rounded text-primary text-center">
-      <h2>Cronometro</h2>
+  <div class="container border rounded mt-2 p-3 bg-dark text-light">
+    <div class="col-12 border rounded text-primary text-center mb-2">
+      <h2>StopWatch</h2>
     </div>
-    <div class="row">
-    <div class="col-3">
-      <span id="iniciar" class="fa fa-play-circle" v-on:click="manejoClick($event)"></span>
+    <div class="row align-items-center">
+      <div class="col-3 text-center">
+        <span id="start" class="fa fa-play-circle fa-3x" 
+        v-on:click="clickHandler($event)"></span>
+      </div>
+      <div class="col-6 text-center text-light">
+        <h3>{{ pdHours }}:{{ pdMinutes }}:{{ pdSeconds }}.{{ pdTime * 10 }}</h3>
+      </div>
+      <div class="col-3 text-center">
+        <span id="stop" class="fa fa-pause-circle fa-3x" v-on:click="clickHandler($event)"></span>
+      </div>
     </div>
-    <div class="col-6 text-center text-primary">
-      {{pdHoras}}: {{pdMinutos}}:{{pdSegundos}}.{{pdTiempo*10}}
-    </div>
-    <div class="col-3">
-      <span id="detener" class="fa fa-stop-circle" v-on:click="manejoClick($event)"></span>
-    </div>  
-</div>
-</div>
+  </div>
 </template>
 
-<script>
-    var crono = new Vue({
-    el:"#crono",
-    data:{
-      pdTiempo:0,
-      interval:"",
-      pdHoras:0,
-      pdMinutos:0,
-      pdSegundos:0
-    },
-    methods:{
-      manejoClick:function(event){
-        if(event.target.id==="iniciar"){
 
-       
-          this.interval = setInterval(()=>{
-        this.pdTiempo++;
-        if(this.pdTiempo>9){
-          this.pdTiempo = 0
-          this.pdSegundos++;
-        }
-        if(this.pdSegundos>59){
-          this.pdSegundos=0;
-          this.pdMinutos++;
-        }
-        if(this.pdMinutos>59){
-          this.pdMinutos=0;
-          this.pdHoras++;
-        }
-        },100);
-      }
-        else if(event.target.id==="detener"){
-          clearInterval(this.interval);
-        }
-      }
-    }
-  })
-</script>

@@ -1,46 +1,46 @@
 <script>
-import { defineComponent, ref } from 'vue';
+import Vue from 'vue';
 
-export default defineComponent({
+export default Vue.extend({
   name: "registration",
   data() {
     return {
       form: {
-        campo_nombre: "Nombre Completo",
-        campo_email: "Correo electronico",
-        campo_usuario: "Nombre de usuario",
-        campo_pass: "Contraseña",
-        campo_pass_Confirm: "Confirme la contraseña",
-        fNombre: "",
-        fEmail: "",
-        fUsuario: "",
-        fPass: "",
-        fPass_Confirm: ""
+        field_name: "Full Name",
+        field_email: "Email Address",
+        field_username: "Username",
+        field_password: "Password",
+        field_password_confirm: "Confirm Password",
+        name: "",
+        email: "",
+        username: "",
+        password: "",
+        password_confirm: ""
       }
-    }
+    };
   },
   methods: {
-    print() {
-      let eName = this.form.fNombre;
-      let eEmail = this.form.fEmail;
-      let eUsuario = this.form.fUsuario;
-      let eContraseña = this.form.fPass;
-      let eConfirContraseña = this.form.fPass_Confirm;
-      console.log(`Nombre : ${eName} Email : ${eEmail} Usuario : ${eUsuario} Contraseña : ${eContraseña} Confirmar contraseña : ${eConfirContraseña}`);
+    submitForm() {
+      let name = this.form.name;
+      let email = this.form.email;
+      let username = this.form.username;
+      let password = this.form.password;
+      let passwordConfirm = this.form.password_confirm;
+      console.log(`Name: ${name}, Email: ${email}, Username: ${username}, Password: ${password}, Confirm Password: ${passwordConfirm}`);
     },
-    changeFocus(e) {
-      switch (e.target.id) {
-        case "campo_nombre":
-          this.$refs.campo_email.focus();
+    changeFocus(event) {
+      switch (event.target.id) {
+        case "field_name":
+          this.$refs.field_email.focus();
           break;
-        case "campo_email":
-          this.$refs.campo_usuario.focus();
+        case "field_email":
+          this.$refs.field_username.focus();
           break;
-        case "campo_usuario":
-          this.$refs.campo_pass.focus();
+        case "field_username":
+          this.$refs.field_password.focus();
           break;
-        case "campo_pass":
-          this.$refs.campo_pass_Confirm.focus();
+        case "field_password":
+          this.$refs.field_password_confirm.focus();
           break;
       }
     },
@@ -48,111 +48,110 @@ export default defineComponent({
       const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       return regexEmail.test(email);
     },
-    eventChangeHandler() {
-      // Implementar la lógica aquí
+    handleChange() {
+      // Implement your logic here
     }
   }
 });
 </script>
 
+
 <template>
-  <div id="form" class="container mt-5">
-    <div class="col-12 border rounded p-4 bg-light">
-      <h3 class="text-center mb-4">Registration Form</h3>
+  <div id="form" class="container border rounded mt-2 p-3 bg-dark text-light">
+    <div class="col-12 border rounded p-4 bg-dark">     
       <div class="form-group">
-        <label for="campo_nombre" class="cols-sm-2 control-label">{{ form.campo_nombre }}</label>
+        <label for="field_name" class="cols-sm-2 control-label">{{ form.field_name }}</label>
         <div class="cols-sm-12">
           <div class="input-group">
             <span class="pt-2 px-3 input-group-addon bg-info text-white">
-              <i class="fa fa-user" aria-hidden="true"></i>
+              <i class="fa fa-user fa-lg" aria-hidden="true"></i>
             </span>
-            <input v-model="form.fNombre"
+            <input v-model="form.name"
                    type="text"
-                   class="form-control"
+                   class="form-control bg-dark text-light"
                    name="name"
-                   id="campo_nombre"
-                   :placeholder="form.campo_nombre"
+                   id="field_name"
+                   :placeholder="form.field_name"
                    v-on:keyup.enter="changeFocus($event)"
-                   ref="campo_nombre"/>
+                   ref="field_name"/>
           </div>
         </div>
       </div>
       <div class="form-group mt-3">
-        <label for="campo_email" class="cols-sm-2 control-label">{{ form.campo_email }}</label>
+        <label for="field_email" class="cols-sm-2 control-label">{{ form.field_email }}</label>
         <div class="cols-sm-12">
           <div class="input-group">
             <span class="pt-2 px-3 input-group-addon bg-info text-white">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
             </span>
-            <input v-model="form.fEmail"
+            <input v-model="form.email"
                    type="email"
-                   class="form-control"
+                   class="form-control bg-dark text-light"
                    name="email"
-                   id="campo_email"
-                   :placeholder="form.campo_email"
+                   id="field_email"
+                   :placeholder="form.field_email"
                    v-on:keyup.enter="changeFocus($event)"
-                   ref="campo_email"/>
+                   ref="field_email"/>
           </div>
         </div>
       </div>
       <div class="form-group mt-3">
-        <label for="campo_usuario" class="cols-sm-2 control-label">{{ form.campo_usuario }}</label>
+        <label for="field_username" class="cols-sm-2 control-label">{{ form.field_username }}</label>
         <div class="cols-sm-12">
           <div class="input-group">
             <span class="pt-2 px-3 input-group-addon bg-info text-white">
-              <i class="fa fa-users" aria-hidden="true"></i>
+              <i class="fa fa-users fa-lg" aria-hidden="true"></i>
             </span>
-            <input v-model="form.fUsuario"
+            <input v-model="form.username"
                    type="text"
-                   class="form-control"
-                   name="usuario"
-                   id="campo_usuario"
-                   :placeholder="form.campo_usuario"
+                   class="form-control bg-dark text-light"
+                   name="username"
+                   id="field_username"
+                   :placeholder="form.field_username"
                    v-on:keyup.enter="changeFocus($event)"
-                   ref="campo_usuario"/>
+                   ref="field_username"/>
           </div>
         </div>
       </div>
       <div class="form-group mt-3">
-        <label for="campo_pass" class="cols-sm-2 control-label">{{ form.campo_pass }}</label>
+        <label for="field_password" class="cols-sm-2 control-label">{{ form.field_password }}</label>
         <div class="cols-sm-12">
           <div class="input-group">
             <span class="pt-2 px-3 input-group-addon bg-info text-white">
-              <i class="fa fa-lock" aria-hidden="true"></i>
+              <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
             </span>
-            <input v-model="form.fPass"
+            <input v-model="form.password"
                    type="password"
-                   class="form-control"
-                   name="contraseña"
-                   id="campo_pass"
-                   :placeholder="form.campo_pass"
+                   class="form-control bg-dark text-light"
+                   name="password"
+                   id="field_password"
+                   :placeholder="form.field_password"
                    v-on:keyup.enter="changeFocus($event)"
-                   ref="campo_pass"/>
+                   ref="field_password"/>
           </div>
         </div>
       </div>
       <div class="form-group mt-3">
-        <label for="campo_pass_Confirm" class="cols-sm-2 control-label">{{ form.campo_pass_Confirm }}</label>
+        <label for="field_password_confirm" class="cols-sm-2 control-label">{{ form.field_password_confirm }}</label>
         <div class="cols-sm-12">
           <div class="input-group">
             <span class="pt-2 px-3 input-group-addon bg-info text-white">
-              <i class="fa fa-lock" aria-hidden="true"></i>
+              <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
             </span>
-            <input v-model="form.fPass_Confirm"
+            <input v-model="form.password_confirm"
                    type="password"
-                   class="form-control"
-                   name="confirmarcontraseña"
-                   id="campo_pass_Confirm"
-                   :placeholder="form.campo_pass_Confirm"
-                   ref="campo_pass_Confirm"/>
+                   class="form-control bg-dark text-light"
+                   name="password_confirm"
+                   id="field_password_confirm"
+                   :placeholder="form.field_password_confirm"
+                   ref="field_password_confirm"/>
           </div>
         </div>
       </div>
       <div class="d-flex justify-content-center mt-4">
-        <button class="btn btn-primary btn-lg" v-on:click="print">Registrarse</button>
+        <button class="btn btn-primary btn-lg" v-on:click="submitForm">Register</button>
       </div>
     </div>
   </div>
 </template>
-
 

@@ -1,58 +1,81 @@
+<script>
+  import Vue from 'vue';
+
+  export default Vue.extend({
+    name: "usersComponent",
+    data() {
+      return {
+        users: [
+          {
+              id: 1,
+              name: "Juan Pérez",
+              email: "juan.perez@example.com",
+              userName: "JuanPe3"
+          },
+          {
+              id: 2,
+              name: "María García",
+              email: "maria.garcia@example.com",
+              userName: "Maria34"
+          },
+          {
+              id: 3,
+              name: "Carlos López",
+              email: "carlos.lopez@example.com",
+              userName: "Crack123"
+          },
+          {
+              id: 4,
+              name: "Ana Martínez",
+              email: "ana.martinez@example.com",
+              userName: "MarAna123"
+          },
+          {
+              id: 5,
+              name: "Luis Fernández",
+              email: "luis.fernandez@example.com",
+              userName: "Fernandez23"
+          }
+        ]
+      };
+    }
+  });
+</script>
+
 <template>
-<div class="col-12">
-    <div id="saludo" class="text-primary">
-      <h1> {{ mensaje }}</h1>
+  <div class="container border rounded mt-2 p-3 bg-dark text-light">
+    <div class="col-12 border rounded text-primary text-center mb-2">
+      <h2>Users</h2>
     </div>
-      <div class="row">
-          <div class="col-12">                    
-              <ul class="list-group" id="Example" >
-                <li class="list-group-item" v-for="usuario in usuarios" :key="usuario.id">
-                  <strong>{{ usuario.nombre }}</strong><br>
-                  Correo: {{ usuario.correo }}<br>
-                  Edad: {{ usuario.edad }}
-              </li>
-              </ul>
-          </div>
+    <div class="row">
+      <div class="col-12">
+        <ul class="list-group" id="users-list">
+          <li class="list-group-item dark-mode-item" v-for="user in users" :key="user.id">
+            Full name: <strong>{{ user.name }}</strong><br>
+            Email: {{ user.email }}<br>
+            User: {{ user.userName }}
+          </li>
+        </ul>
       </div>
-  </div>  
+    </div>
+  </div>
 </template>
 
-  <script>
-    var Example = new Vue({
-    el:"#Example",
-    data:{
-      usuarios: [
-        {
-            id: 1,
-            nombre: "Juan Pérez",
-            correo: "juan.perez@example.com",
-            edad: 28
-        },
-        {
-            id: 2,
-            nombre: "María García",
-            correo: "maria.garcia@example.com",
-            edad: 34
-        },
-        {
-            id: 3,
-            nombre: "Carlos López",
-            correo: "carlos.lopez@example.com",
-            edad: 25
-        },
-        {
-            id: 4,
-            nombre: "Ana Martínez",
-            correo: "ana.martinez@example.com",
-            edad: 30
-        },
-        {
-            id: 5,
-            nombre: "Luis Fernández",
-            correo: "luis.fernandez@example.com",
-            edad: 27
-        }
-    ]
-    }
-  })
-  </script>
+<style scoped>
+.container {
+  background-color: #333; /* Color de fondo oscuro */
+  color: #fff; /* Texto en color blanco */
+  border-color: #555; /* Color del borde */
+}
+
+.dark-mode-item {
+  background-color: #444; /* Color de fondo para elementos de lista */
+  border-color: #666; /* Color del borde de elementos de lista */
+  color: #fff; /* Texto en color blanco */
+}
+
+.dark-mode-item strong {
+  color: #ffc107; /* Color del texto fuerte (nombre del usuario) */
+}
+</style>
+

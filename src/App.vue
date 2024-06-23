@@ -2,16 +2,22 @@
 import Counter from './components/Counter.vue';
 import HeaderComponent from './components/HeaderComponent.vue';
 import Registration from './components/Registration.vue';
+import StopWatch from './components/StopWatch.vue';
+import UserList from './components/UserList.vue';
+import SideBar from './components/SideBar.vue';
 
 export default {
   components: {
     Counter,
     HeaderComponent,
-    Registration
+    Registration,
+    StopWatch,
+    UserList,
+    SideBar
   },
   data() {
     return {
-      message: '¡Hola!'
+      message: '¡Welcome to my Vue 2 web app example!'
     };
   }
 };
@@ -20,48 +26,72 @@ export default {
 <template>
   <div id="app">
     <HeaderComponent />
-    <div class="text-center my-4">
-      <h1 class="text-primary">{{ message }}</h1>
-    </div>
-    <div class="row justify-content-center mb-4">
-      <Counter />
-    </div>
-    <div class="row justify-content-center">
-      <Registration />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-1">
+          <div >
+            <SideBar/>
+          </div>          
+        </div>
+        <div class="col-md-11">
+          <div class="text-center">
+            <h1 class="text-light">{{ message }}</h1>
+          </div>
+          <div class="container mt-5">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="custom-card">
+                  <h5 class="card-title">Counter</h5>
+                  <Counter />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="custom-card">
+                  <h5 class="card-title">StopWatch</h5>
+                  <StopWatch />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container mt-5">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="custom-card">
+                  <h5 class="card-title">Registration</h5>
+                  <Registration />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="custom-card">
+                  <h5 class="card-title">Users List</h5>
+                  <UserList />
+                </div>
+              </div>
+            </div>
+          </div>    
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 
-
-<style>
-    /*Estilo para el tema oscuro*/
-    body {
-    background-color: #343a40; /* Cambia el color de fondo a tu preferencia */
-    color: #fff; /* Color de texto */
+<style scoped>
+.sidebar {
+  background-color: #343a40;
+  color: white;
+  height: calc(100vh - 70px); /* 70px es la altura del header */
+  width: 250px; /* Ancho fijo */
+  padding: 1rem;
+  position: fixed; /* Fijar la barra lateral */
+  top: 100px; /* Altura del header */
+  left: 0; /* Fijar a la izquierda */
+  overflow-y: auto; /* Agregar scroll si es necesario */
 }
-
-.nav-pills .nav-link {
-    color: rgba(255, 255, 255, 0.5); /* Color de los enlaces */
+.nav-link {
+  color: white;
 }
-
-.nav-pills .nav-link.active {
-    color: #fff; /* Color del enlace activo */
-}
-
-.nav-pills .nav-link:hover {
-    color: #fff; /* Color de los enlaces al pasar el mouse */
-}
-
-.link-body-emphasis {
-    color: #fff; /* Color del enlace principal */
-}
-
-.link-body-emphasis:hover {
-    color: #fff; /* Color del enlace principal al pasar el mouse */
-}
-
-header {
-    background-color: #343a40; /* Color de fondo del encabezado */
+.nav-link:hover {
+  color: #ddd;
 }
 </style>
